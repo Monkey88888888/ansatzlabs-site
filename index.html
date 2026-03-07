@@ -1,57 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ansatz Labs</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #fafafa;
-            color: #1a1a1a;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-        }
-        
-        .content {
-            text-align: center;
-            animation: fadeIn 0.8s ease-in-out;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ansatz Labs</title>
+  <meta name="description" content="Ansatz Labs" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-2: #0a1022;
+      --text: #f5f7fb;
+      --muted: rgba(245, 247, 251, 0.68);
+      --line: rgba(255, 255, 255, 0.1);
+      --card: rgba(255, 255, 255, 0.04);
+      --card-2: rgba(255, 255, 255, 0.02);
+      --glow: rgba(94, 106, 210, 0.24);
+      --glow-2: rgba(75, 187, 255, 0.12);
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin: 0 0 0.5rem 0;
-            letter-spacing: -0.02em;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        a.email-link {
-            font-size: 1.1rem;
-            color: #555;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
 
-        a.email-link:hover {
-            color: #000;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
+    body {
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, var(--glow), transparent 28%),
+        radial-gradient(circle at 80% 30%, var(--glow-2), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.05), transparent 30%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      position: relative;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+      pointer-events: none;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 28px;
+      pointer-events: none;
+    }
+
+    .shell {
+      position: relative;
+      z-index: 1;
+      width: min(720px, calc(100vw - 40px));
+      padding: 56px 40px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line);
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      text-align: center;
+      animation: riseIn 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .mark {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 22px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.18), transparent 45%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      box-shadow:
+        0 0 40px rgba(94, 106, 210, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+
+    .mark::before,
+    .mark::after {
+      content: "";
+      position: absolute;
+      inset: 11px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .mark::after {
+      inset: 17px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      font-weight: 600;
+    }
+
+    .email-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: clamp(1rem, 2vw, 1.08rem);
+      letter-spacing: -0.01em;
+      transition:
+        color 180ms ease,
+        opacity 180ms ease,
+        transform 180ms ease;
+      position: relative;
+    }
+
+    .email-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      transform: scaleX(0.55);
+      transform-origin: center;
+      opacity: 0.5;
+      transition:
+        transform 180ms ease,
+        opacity 180ms ease;
+    }
+
+    .email-link:hover {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .email-link:hover::after {
+      transform: scaleX(1);
+      opacity: 0.9;
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        padding: 44px 24px;
+        border-radius: 24px;
+      }
+
+      body::after {
+        inset: 14px;
+        border-radius: 20px;
+      }
+
+      .mark {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 18px;
+      }
+
+      .email-link {
+        margin-top: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="content">
-        <h1>Ansatz Labs</h1>
-        <a href="mailto:hello@ansatzlabs.ai" class="email-link">hello@ansatzlabs.ai</a>
-    </div>
+  <main class="shell">
+    <div class="mark" aria-hidden="true"></div>
+    <h1>Ansatz Labs</h1>
+    <a href="mailto:hello@ansatzlabs.ai" class="email-link">hello@ansatzlabs.ai</a>
+  </main>
 </body>
 </html>
