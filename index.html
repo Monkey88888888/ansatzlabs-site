@@ -11,6 +11,10 @@
     html { min-height: 100%; background: #ffffff; }
     body {
       margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
       color: #000000;
       font-family: Georgia, "Times New Roman", Times, serif;
       font-size: 20px;
@@ -20,11 +24,12 @@
     main {
       width: min(100%, 1040px);
       margin: 0 auto;
-      padding: 32px 32px 80px;
+      padding: 80px 32px 64px;
+      flex: 1;
     }
     h1 {
       margin: 0 0 24px;
-      font-size: 30px;
+      font-size: 40px;
       line-height: 1.4;
       font-weight: 700;
       letter-spacing: -0.035em;
@@ -33,11 +38,19 @@
     a { color: #000000; text-decoration: none; }
     a:hover { text-decoration: underline; text-underline-offset: 5px; }
     a:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
-    footer { margin-top: 72px; color: #000000; font-size: 13px; letter-spacing: 0.01em; }
+    footer {
+      width: min(100%, 1040px);
+      margin: 0 auto;
+      padding: 0 32px 28px;
+      color: #000000;
+      font-size: 13px;
+      letter-spacing: 0.01em;
+    }
     @media (max-width: 600px) {
-      main { padding: 28px 24px 64px; }
+      main { padding: 56px 24px 64px; }
+      footer { padding: 0 24px 24px; }
       body { font-size: 18px; }
-      h1 { font-size: 28px; }
+      h1 { font-size: 36px; }
     }
   </style>
 </head>
@@ -46,7 +59,7 @@
     <h1>Ansatz Labs</h1>
     <p>Finding superalphas</p>
     <a href="mailto:hello@ansatzlabs.ai">hello@ansatzlabs.ai</a>
-    <footer>© 2026 Ansatz Labs Inc.</footer>
   </main>
+  <footer>© 2026 Ansatz Labs, Inc.</footer>
 </body>
 </html>
