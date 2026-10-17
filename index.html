@@ -20,14 +20,21 @@
       -webkit-font-smoothing: antialiased;
     }
     .container { width: min(100% - 128px, 1440px); margin-inline: auto; }
-    header { padding-top: 48px; }
-    h1 { margin: 0; font-size: 28px; line-height: 1.3; font-weight: 400; letter-spacing: 0.14em; }
+    header { padding-top: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; }
+    nav a { font-size: 18px; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    .prose p + p { margin-top: 28px; }
+    .apply { padding-top: 48px; }
+    .apply p { margin: 0; max-width: 960px; font: 400 clamp(26px, 2.3vw, 36px)/1.5 Georgia, "Times New Roman", serif; }
+    .apply a { font: inherit; overflow-wrap: anywhere; }
+    h1 { margin: 0; font-size: 36px; line-height: 1.3; font-weight: 400; letter-spacing: 0.14em; }
     main { flex: 1; padding-top: clamp(120px, 20vh, 260px); padding-bottom: 120px; }
     section { display: grid; grid-template-columns: 21.5% 1fr; gap: 0; }
     h2 { margin: 10px 24px 0 0; font: 400 14px/1.5 ui-monospace, "SFMono-Regular", Consolas, monospace; text-transform: uppercase; letter-spacing: 0.08em; color: #79756f; }
     .number { color: #386b8a; margin-right: 10px; }
     .about { padding-bottom: 72px; border-bottom: 1px solid #d6d3cd; }
-    .about p { max-width: 960px; margin: 0; font: 400 clamp(28px, 2.6vw, 40px)/1.4 Georgia, "Times New Roman", serif; letter-spacing: -0.015em; }
+    .about p { max-width: 960px; margin: 0; font: 400 clamp(24px, 2.1vw, 30px)/1.4 Georgia, "Times New Roman", serif; letter-spacing: -0.015em; }
     .contact { padding-top: 48px; }
     .contact h2 { margin-top: 3px; }
     a { width: fit-content; color: inherit; font-size: 20px; line-height: 1.5; text-decoration-color: #ccc8c0; text-underline-offset: 5px; text-decoration-thickness: 1px; }
@@ -37,12 +44,12 @@
     @media (max-width: 700px) {
       .container { width: calc(100% - 48px); }
       header { padding-top: 30px; }
-      h1 { font-size: 24px; }
+      h1 { font-size: 30px; }
       main { padding-top: 96px; padding-bottom: 100px; }
       section { grid-template-columns: 1fr; gap: 24px; }
       h2, .contact h2 { margin: 0; font-size: 12px; }
       .about { padding-bottom: 40px; }
-      .about p { font-size: 28px; }
+      .about p { font-size: 24px; }
       .contact { padding-top: 32px; }
       a { font-size: 18px; }
       footer { font-size: 11px; padding-bottom: 24px; }
@@ -50,11 +57,11 @@
   </style>
 </head>
 <body>
-  <header class="container"><h1>Ansatz Labs</h1></header>
+  <header class="container"><a class="brand" href="/" aria-label="Ansatz Labs home"><h1>Ansatz Labs</h1></a><nav aria-label="Main navigation"><a href="/careers">Careers</a></nav></header>
   <main class="container">
     <section class="about" aria-labelledby="about-heading">
       <h2 id="about-heading"><span class="number">01</span>About</h2>
-      <p>Ansatz was founded by friends from leading trading firms to tackle complex problems through technology</p>
+      <p>Ansatz was founded by friends from leading trading firms to tackle complex problems through technology.</p>
     </section>
     <section class="contact" aria-labelledby="contact-heading">
       <h2 id="contact-heading"><span class="number">02</span>Contact</h2>
